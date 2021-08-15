@@ -17,10 +17,10 @@ public class NumberConverter {
         return maxRange;
     }
 
-    public String[] arabicToRoman(final int min, final int max) {
+    public String[] arabicToRoman(final int min, final int max) throws IllegalArgumentException {
         if(min < this.minRange || max > this.maxRange) {
-            System.err.println("Error: Set interval range exceeds valid range!");
-            System.exit(1);
+            String exceptionMessage = "Given interval exceeds valid range [" + minRange + " ," + this.maxRange + "]";
+            throw new IllegalArgumentException(exceptionMessage);
         }
         int size = max - min + 1;
         String[] romanNumerals = new String[size];
