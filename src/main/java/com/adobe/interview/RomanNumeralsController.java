@@ -11,7 +11,6 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 public class RomanNumeralsController {
 
-	// private static final String[] output;
 	private final AtomicLong counter = new AtomicLong();
 
 	@GetMapping("/arabicToRoman")
