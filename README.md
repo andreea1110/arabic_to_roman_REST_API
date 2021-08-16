@@ -37,4 +37,5 @@ The GET request responds with a JSON string with two keys:
 The valid number range for the requests is [1, 100]. If a request is made with limits outside of this range, an error message is logged and an HTTP 400 Bad Request status code is returned.
 
 ## Brief code description
-
+* The API's logic is implemented in the class **NumberConverter.java** at the path *arabic_to_roman_REST_API/src/main/java/com/adobe/interview*. Unit tests checking its functionality are written in **NumberConverterTest.java**.
+* The Resource Representation Class is the class **RomanNumerals.java**, resembling the JSON output. Its associated Resource Controller class is **RomanNumeralsController** which handles the HTTP GET request within its **convertNumbers()** method. Integration tests in the **RomanNumeralsControllerTest.java** file test the correctness of the API by checking that the HTTP response codes and JSON payloads correspond to the expected behaviour.
