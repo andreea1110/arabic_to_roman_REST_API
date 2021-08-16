@@ -1,5 +1,13 @@
 package com.adobe.interview;
 
+/**
+* The NumberConverter class contains a method that to converts
+* a range of numbers from the Arabic system to Roman numerals.
+* The upper and lower limits of the admitted range is hard-coded
+* as private parameters of the class.
+*
+* @author  Andreea Ciuprina
+*/
 public class NumberConverter {
     private int minRange = 1;
     private int maxRange = 100;
@@ -17,6 +25,16 @@ public class NumberConverter {
         return maxRange;
     }
 
+
+    /**
+   * The arabicToRoman uses an algorithm based on the additive notation property of all of the Roman numerals,
+   * except a few of them (4, 9, 40, 90, 400, 900) written using subtractive notation, that are saved
+   * in the SYMBOLS class variable, alongside the other basic symbols ranging from 1 to 1000.
+   * @param min lower limit
+   * @param max upper limit
+   * @return String array of the Roman numerals in ascending order
+   * @exception IllegalArgumentException if the given lower or upper limits are outside the valid range
+   */
     public String[] arabicToRoman(final int min, final int max) throws IllegalArgumentException {
         if(min < this.minRange || max > this.maxRange) {
             String exceptionMessage = "Given interval exceeds valid range [" + minRange + " ," + this.maxRange + "]";
