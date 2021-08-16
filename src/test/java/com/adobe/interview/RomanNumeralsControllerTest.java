@@ -29,6 +29,20 @@ public class RomanNumeralsControllerTest {
 		return "http://localhost:" + port + uri;
 	}
 
+    // testing OK status code (200 OK if range inside set boundaries)
+    @Test
+    public void testConvertNumbers_insideBoundaries__200IsReceived() throws ResponseStatusException {
+
+        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/arabicToRoman?min=1&max=100"),
+                                                                HttpMethod.GET, 
+                                                                entity,
+                                                                String.class);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+
 
     // testing error status code (400 Bad Request if range outside set boundaries)
     @Test
@@ -56,7 +70,7 @@ public class RomanNumeralsControllerTest {
                                                                 entity,
                                                                 String.class);
 
-		String expected = "{\"id\":1,\"content\":[\"I\",\"II\",\"III\",\"IV\",\"V\",\"VI\",\"VII\",\"VIII\",\"IX\",\"X\"]}";
+		String expected = "{\"id\":2,\"content\":[\"I\",\"II\",\"III\",\"IV\",\"V\",\"VI\",\"VII\",\"VIII\",\"IX\",\"X\"]}";
 
 		assertEquals(expected, response.getBody());
 	}
