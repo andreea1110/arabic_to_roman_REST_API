@@ -26,6 +26,7 @@ public class RomanNumeralsController {
 			return new RomanNumerals(counter.incrementAndGet(), romanNumerals);
 		}
 		catch (IllegalArgumentException exp) {
+			System.err.println(exp);
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Interval exceeds valid range", exp);
 		}		
 	}
