@@ -1,5 +1,7 @@
 package com.adobe.interview;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.http.HttpStatus;
@@ -25,7 +27,8 @@ public class RomanNumeralsController {
 			return new RomanNumerals(counter.incrementAndGet(), romanNumerals);
 		}
 		catch (IllegalArgumentException exp) {
-			System.err.println(exp);
+			Logger logger = Logger.getLogger(RomanNumeralsController.class.getName());
+			logger.log(Level.SEVERE, "Requested interval exceeds valid range");
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Interval exceeds valid range", exp);
 		}		
 	}
